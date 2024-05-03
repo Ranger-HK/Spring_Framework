@@ -1,3 +1,4 @@
+import bean.SpringBean;
 import config.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -7,10 +8,36 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * @project Spring_Framework
  */
 public class AppInitializer {
-    public static void main(String[] args) {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+    public static void main(String[] args){
+
+        // Create Container Object
+       AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+
+       //Register Config class
         ctx.register(AppConfig.class);
+
         ctx.refresh();
+
+        SpringBean bean = ctx.getBean(SpringBean.class);
+        bean.testBean();
+        System.out.println(bean);
+
         ctx.close();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

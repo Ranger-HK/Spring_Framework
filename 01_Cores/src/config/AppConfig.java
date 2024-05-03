@@ -8,7 +8,10 @@ import org.springframework.context.annotation.Configuration;
  * @created 5/3/2024 - 4:29 PM
  * @project Spring_Framework
  */
-@Configuration
-@ComponentScan(basePackages = "bean")
+@Configuration // Me Class eka Configuration Class Ekak Kiyala Kiyanna
+@ComponentScan(basePackages = "bean")  //Scanning and Introduce Spring Bean/POJO Class to Application Context
 public class AppConfig {
+    public AppConfig() {
+        System.out.println("Create Config Object");
+    }
 }

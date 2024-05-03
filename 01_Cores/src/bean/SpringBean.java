@@ -12,4 +12,8 @@ public class SpringBean {
     public SpringBean() {
         System.out.println("Spring Bean Object Created");
     }
+
+    public void testBean(){
+        System.out.println("Yes.. Spring Bean is working...!");
+    }
 }
