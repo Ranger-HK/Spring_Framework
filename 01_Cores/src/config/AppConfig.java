@@ -18,8 +18,8 @@ public class AppConfig {
         System.out.println("Create Config Object");
     }
 
-   // @Bean("connection")
-    @Bean
+    @Bean("connection")
+    //@Bean
     public MyConnection getConnection(){
         return new MyConnection();
     }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 //POJO Driven Approach Spring Beans
 
-@Component
+@Component("BeanSix")//Change bean id
 public class SpringBean {
     public SpringBean() {
         System.out.println("Spring Bean Object Created");
