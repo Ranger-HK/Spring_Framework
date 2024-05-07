@@ -30,13 +30,13 @@ public class AppInitializer {
 
         ctx.refresh();
 
-        //request for bean
+       /* //request for bean
         SpringBean bean = ctx.getBean(SpringBean.class);
         bean.testBean();
         System.out.println(bean);
 
-       /* BeanTwo beantwo = ctx.getBean(BeanTwo.class);
-        System.out.println(beantwo);*/
+       *//* BeanTwo beantwo = ctx.getBean(BeanTwo.class);
+        System.out.println(beantwo);*//*
 
         BeanThree beanthree = ctx.getBean(BeanThree.class);
         System.out.println(beanthree);
@@ -51,12 +51,26 @@ public class AppInitializer {
 
         Object beanTwo = ctx.getBean("beanTwo");
         System.out.println(beanTwo);
-
+*/
        /* BeanTwo beanTwo = (BeanTwo) ctx.getBean("beanTwo");//bean ID
         System.out.println(beanTwo);*/
 
 
+
+        //my connection bean
+
+       /* MyConnection bean = ctx.getBean(MyConnection.class);
+        System.out.println(bean);
+*/
+        /*MyConnection getConnection = (MyConnection) ctx.getBean("getConnection");
+        System.out.println(getConnection);*/
+
+        /*MyConnection connection = (MyConnection) ctx.getBean("connection");
+        System.out.println(connection);*/
+
     }
+
+
 }
 
 
