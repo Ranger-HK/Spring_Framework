@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
  * @created 5/3/2024 - 4:29 PM
  * @project Spring_Framework
  */
+
+//POJO Driven Approach Spring Beans
+
 @Component
 public class SpringBean {
     public SpringBean() {
