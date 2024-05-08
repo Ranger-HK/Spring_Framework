@@ -1,5 +1,6 @@
 package bean;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Component;
  * @project Spring_Framework
  */
 @Component
-@Scope("prototype") //change singleton to object
+//@Scope("prototype") //change singleton to object - 1st way
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE) //- 2nd way
+
 public class BeanTwo {
     public BeanTwo() {
         System.out.println("Bean Two");
