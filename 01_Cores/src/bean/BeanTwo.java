@@ -1,5 +1,6 @@
 package bean;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
  * @project Spring_Framework
  */
 @Component
+@Scope("prototype") //change singleton to object
 public class BeanTwo {
     public BeanTwo() {
         System.out.println("Bean Two");
