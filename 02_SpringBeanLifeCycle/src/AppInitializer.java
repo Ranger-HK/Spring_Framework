@@ -1,5 +1,3 @@
-import bean.MyConnection;
-import bean.SpringBeanOne;
 import config.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -19,20 +17,6 @@ public class AppInitializer {
 
         ctx.refresh();
 
-       /* SpringBeanOne bean1 = ctx.getBean(SpringBeanOne.class);
-        System.out.println(bean1);
-
-        SpringBeanOne bean2 = ctx.getBean(SpringBeanOne.class);
-        System.out.println(bean2);
-
-        SpringBeanOne bean3 = ctx.getBean(SpringBeanOne.class);
-        System.out.println(bean3);*/
-
-
-        MyConnection bean1 = ctx.getBean(MyConnection.class);
-        MyConnection bean2 = ctx.getBean(MyConnection.class);
-        System.out.println(bean1);
-        System.out.println(bean2);
     }
 
 }

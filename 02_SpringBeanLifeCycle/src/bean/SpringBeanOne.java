@@ -1,6 +1,10 @@
 package bean;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.*;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +14,39 @@ import org.springframework.stereotype.Component;
  * @project Spring_Framework
  */
 @Component
-//@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class SpringBeanOne {
+public class SpringBeanOne implements BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean {
+
     public SpringBeanOne() {
-        System.out.println("Spring Bean One Object Created");
+        System.out.println("Spring Bean One Instantiated");
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        System.out.println("Spring Bean One Bean Name Aware Call");
+
+    }
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        System.out.println("Spring Bean One Bean Factory Name Aware Call");
+
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        System.out.println("Spring Bean One Application Context Aware Call");
+
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Spring Bean One Initializing Bean Called And Bean Is Ready To Use");
+
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("Spring Bean One Destroyed");
+
     }
 }
