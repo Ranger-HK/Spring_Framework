@@ -1,5 +1,6 @@
 package di;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,12 +10,16 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class Class {
-    public Class() {
+public class CMain {
+
+    @Autowired
+    C1 classOne;
+
+    public CMain() {
         System.out.println("Class is in context");
     }
 
-    public void chattingWithClasses(){
-        System.out.println("Chatting");
+    public void chattingWithCs(){
+        classOne.chat();
     }
 }

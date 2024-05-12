@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class ClassOne {
-    public ClassOne() {
+public class C1 {
+    public C1() {
         System.out.println("ClassOne Instantiated");
     }
 

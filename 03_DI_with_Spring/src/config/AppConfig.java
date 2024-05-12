@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Configuration;
  * @project Spring_Framework
  */
 @Configuration
-@ComponentScan(basePackages = "bean")
+//@ComponentScan(basePackages = "bean")
+@ComponentScan(basePackages = "di")
 public class AppConfig {
     public AppConfig() {
         System.out.println("Create Config Object");

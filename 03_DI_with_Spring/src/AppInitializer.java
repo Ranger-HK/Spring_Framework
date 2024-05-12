@@ -1,5 +1,6 @@
 import bean.Boy;
 import config.AppConfig;
+import di.CMain;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -15,9 +16,13 @@ public class AppInitializer {
         ctx.refresh();
         ctx.registerShutdownHook();
 
-        Boy boy = ctx.getBean(Boy.class);
+        /*Boy boy = ctx.getBean(Boy.class);
         System.out.println(boy);
-        boy.chattingWithGirl();
+        boy.chattingWithGirl();*/
+
+        CMain bean = ctx.getBean(CMain.class);
+        bean.chattingWithCs();
+
 
     }
 
