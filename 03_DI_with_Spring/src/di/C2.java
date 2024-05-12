@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@Primary
 public class C2 implements GoodClass {
     public C2() {
         System.out.println("Class Two Instantiated");
