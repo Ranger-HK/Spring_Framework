@@ -1,5 +1,8 @@
 package config;
 
+import bean.SpringBeanOne;
+import bean.SpringBeanTwo;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,10 +13,21 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan(basePackages = "bean")
+
 public class AppConfig {
-    public AppConfig() {
-        System.out.println("Create Config Object");
+
+    @Bean
+    public SpringBeanOne getBeanOne(){
+        SpringBeanOne beanOne = getBeanOne();
+
+        System.out.println(beanOne);
+
+        return new SpringBeanOne();
     }
 
+    @Bean
+    public SpringBeanTwo getBeanTwo(){
+        return new SpringBeanTwo();
+    }
 
 }
