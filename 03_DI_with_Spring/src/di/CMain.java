@@ -43,7 +43,6 @@ public class CMain implements IntInject{
 
 
     //Interface Through Injection
-
     GoodClass classOne;
 
     @Autowired
