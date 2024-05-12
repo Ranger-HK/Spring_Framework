@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class CMain implements GoodClass {
 
     @Qualifier("c1")
-    @Autowired
+    @Autowired // property injection
     GoodClass classOne;
 
     public CMain() {
