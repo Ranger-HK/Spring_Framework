@@ -2,7 +2,6 @@ package di;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,7 +22,7 @@ public class CMain implements GoodClass {
     }
 
     @Override
-    public void chattingWithCs(){
+    public void chattingWithCs() {
         classOne.chattingWithCs();
     }
 }
