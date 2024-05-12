@@ -11,11 +11,13 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class CMain implements GoodClass {
+public class CMain implements IntInject{
 
- /*   // property injection
+    /*// property injection
     @Autowired
     GoodClass classOne;*/
+
+
 
    /* //Constructor Injection
     GoodClass classOne;
@@ -28,15 +30,29 @@ public class CMain implements GoodClass {
 */
 
 
-    //Setter Method Injection
+
+    /*//Setter Method Injection
     GoodClass classOne;
 
     @Autowired
     public void setClassOne(GoodClass classOne) {
         this.classOne = classOne;
+    }*/
+
+
+
+
+    //Interface Through Injection
+
+    GoodClass classOne;
+
+    @Autowired
+    @Override
+    public void inject(GoodClass classOne) {
+        this.classOne=classOne;
     }
 
-    @Override
+
     public void chattingWithCs() {
         classOne.chattingWithCs();
     }
