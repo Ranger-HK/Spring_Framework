@@ -13,12 +13,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class CMain implements GoodClass {
 
-    @Autowired // property injection
+ /*   // property injection
+    @Autowired
+    GoodClass classOne;*/
+
+    //Constructor Injection
+
     GoodClass classOne;
 
-    public CMain() {
+    @Autowired
+    public CMain(GoodClass g) {
+        this.classOne=g;
         System.out.println("Class is in context");
     }
+
+
 
     @Override
     public void chattingWithCs() {
