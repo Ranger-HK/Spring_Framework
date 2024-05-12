@@ -17,8 +17,7 @@ public class CMain implements GoodClass {
     @Autowired
     GoodClass classOne;*/
 
-    //Constructor Injection
-
+   /* //Constructor Injection
     GoodClass classOne;
 
     @Autowired
@@ -26,8 +25,16 @@ public class CMain implements GoodClass {
         this.classOne=g;
         System.out.println("Class is in context");
     }
+*/
 
 
+    //Setter Method Injection
+    GoodClass classOne;
+
+    @Autowired
+    public void setClassOne(GoodClass classOne) {
+        this.classOne = classOne;
+    }
 
     @Override
     public void chattingWithCs() {
