@@ -1,5 +1,6 @@
 package di;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,13 +10,14 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class C1 {
+@Primary
+public class C1 implements GoodClass{
     public C1() {
         System.out.println("ClassOne Instantiated");
     }
 
-    public void chat() {
+    @Override
+    public void chattingWithCs() {
         System.out.println("Chatting With Class One");
-
     }
 }

@@ -1,6 +1,8 @@
 package di;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,8 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class CMain implements GoodClass {
 
+    @Qualifier("c1")
     @Autowired
-    C1 classOne;
+    GoodClass classOne;
 
     public CMain() {
         System.out.println("Class is in context");
@@ -21,6 +24,6 @@ public class CMain implements GoodClass {
 
     @Override
     public void chattingWithCs(){
-        classOne.chat();
+        classOne.chattingWithCs();
     }
 }
