@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @project Spring_Framework
  */
 @Component
-//@Primary
+@Primary
 public class GirlOne implements GoodGirl {
     public GirlOne() {
         System.out.println("Girl Instantiated");
