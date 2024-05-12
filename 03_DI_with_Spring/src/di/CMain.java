@@ -1,7 +1,6 @@
 package di;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class CMain implements IntInject{
+public class CMain implements IntInject {
 
     /*// property injection
     @Autowired
@@ -40,15 +39,13 @@ public class CMain implements IntInject{
     }*/
 
 
-
-
     //Interface Through Injection
     GoodClass classOne;
 
     @Autowired
     @Override
     public void inject(GoodClass classOne) {
-        this.classOne=classOne;
+        this.classOne = classOne;
     }
 
 
