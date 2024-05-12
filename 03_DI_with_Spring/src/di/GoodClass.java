@@ -6,5 +6,6 @@ package di;
  * @project Spring_Framework
  */
 public interface GoodClass {
+   void chattingWithCs();
 
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class CMain {
+public class CMain implements GoodClass {
 
     @Autowired
     C1 classOne;
@@ -19,6 +19,7 @@ public class CMain {
         System.out.println("Class is in context");
     }
 
+    @Override
     public void chattingWithCs(){
         classOne.chat();
     }
