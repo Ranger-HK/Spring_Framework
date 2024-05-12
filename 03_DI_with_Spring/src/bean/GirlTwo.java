@@ -1,22 +1,20 @@
 package bean;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
  * @Created By Ravindu Prathibha
- * @created 5/12/2024 - 11:31 AM
+ * @created 5/12/2024 - 12:40 PM
  * @project Spring_Framework
  */
 @Component
-public class Girl implements GoodGirl {
-    public Girl() {
-        System.out.println("Girl Instantiated");
-    }
-
+@Primary
+public class GirlTwo implements GoodGirl {
 
     @Override
     public void chat() {
-        System.out.println("Chatting");
+        System.out.println("Chatting With Girl Two");
 
     }
 }
