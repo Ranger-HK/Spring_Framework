@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ImportResource;
 @ComponentScan(basePackages = "bean")
 @Import({AppConfig2.class,AppConfig3.class})
 @ImportResource("classpath:abcd.xml") //Direct Path
-@ImportResource("file:absolute-path-of-abcd.xml") //Absolute Path
+//@ImportResource("file:absolute-path-of-abcd.xml") //Absolute Path
 public class AppConfig {
     public AppConfig() {
         System.out.println("Create Config Object");

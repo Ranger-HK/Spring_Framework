@@ -1,9 +1,6 @@
 package bean;
 
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.*;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,39 +9,25 @@ import org.springframework.stereotype.Component;
  * @project Spring_Framework
  */
 @Component
-public class SpringBeanOne implements BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean {
-
-    public SpringBeanOne() {
+public class SpringBeanOne {
+   /* public SpringBeanOne(@Value("C001") String id ) {
         System.out.println("Spring Bean One Instantiated");
+        System.out.println(id);
+    }*/
+
+   /* public SpringBeanOne(@Value("C001") String id , @Value("10") int age,@Value("true") boolean b) {
+        System.out.println("Spring Bean One Instantiated");
+        System.out.println(id);
+        System.out.println(age);
+        System.out.println(b);
+    }*/
+
+    public SpringBeanOne(@Value("1,2,3") int[] myNames,@Value("A") char a) {
+        System.out.println("Spring Bean One Instantiated");
+        for (Integer myName : myNames){
+            System.out.println(myName);
+        }
+        System.out.println(a);
     }
 
-    @Override
-    public void setBeanName(String name) {
-        System.out.println("Spring Bean One Bean Name Aware Call");
-
-    }
-
-    @Override
-    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        System.out.println("Spring Bean One Bean Factory Name Aware Call");
-
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        System.out.println("Spring Bean One Application Context Aware Call");
-
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("Spring Bean One Initializing Bean Called And Bean Is Ready To Use");
-
-    }
-
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("Spring Bean One Destroyed");
-
-    }
 }
