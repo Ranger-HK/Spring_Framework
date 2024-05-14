@@ -16,6 +16,7 @@ public class SpringBeanOne {
         System.out.println(id);
     }*/
 
+    @Autowired(required = false)
     public SpringBeanOne(@Value("C001") String id , @Value("10") int age,@Value("true") boolean b) {
         System.out.println("Spring Bean One Instantiated");
         System.out.println(id);
@@ -23,7 +24,7 @@ public class SpringBeanOne {
         System.out.println(b);
     }
 
-    @Autowired
+    @Autowired(required = false)
     public SpringBeanOne(@Value("1,2,3") int[] myNames,@Value("A") char a) {
         System.out.println("Spring Bean One Instantiated");
         for (Integer myName : myNames){
