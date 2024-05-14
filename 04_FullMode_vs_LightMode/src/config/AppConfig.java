@@ -1,5 +1,7 @@
 package config;
 
+import bean.MyBasicDataSource;
+import bean.MyConnection;
 import bean.SpringBeanOne;
 import bean.SpringBeanTwo;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 
 public class AppConfig {
 
-    @Bean
+    /*@Bean
     public SpringBeanOne getBeanOne(){
         SpringBeanOne beanOne = getBeanOne();
 
@@ -29,5 +31,31 @@ public class AppConfig {
     public SpringBeanTwo getBeanTwo(){
         return new SpringBeanTwo();
     }
+*/
+
+    @Bean
+    public MyBasicDataSource myBasicDataSource(){
+
+        //Manually Create Object -- not valid
+       // MyConnection myConnection = new MyConnection();
+
+
+        //Inter Bean Dependency Invocation
+        MyConnection myConnection = myConnection();
+
+        MyBasicDataSource myBasicDataSource = new MyBasicDataSource();
+        myBasicDataSource.setMyConnection(myConnection);
+
+        return myBasicDataSource;
+
+    }
+
+    public MyConnection myConnection(){
+        return new MyConnection();
+
+    }
+
+
+
 
 }
