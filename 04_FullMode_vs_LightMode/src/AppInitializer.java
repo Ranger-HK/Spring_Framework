@@ -1,3 +1,4 @@
+import bean.MyConnection;
 import bean.SpringBeanOne;
 import config.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -15,14 +16,12 @@ public class AppInitializer {
         ctx.refresh();
         ctx.registerShutdownHook();
 
-
-        SpringBeanOne sb1 = ctx.getBean(SpringBeanOne.class);
-        System.out.println(sb1);
+        MyConnection bean = ctx.getBean(MyConnection.class);
+        System.out.println(bean);
 
     }
 
 }
-
 
 
 
