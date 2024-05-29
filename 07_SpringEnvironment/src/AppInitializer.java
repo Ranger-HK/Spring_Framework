@@ -18,7 +18,7 @@ public class AppInitializer {
         ctx.registerShutdownHook();
 
 
-        //Access System Environment Variables in Java
+       /* //Access System Environment Variables in Java
         //System.getenv()  -- use that key
         Map<String, String> getenv = System.getenv();
         for (String key:getenv.keySet()) {
@@ -31,7 +31,10 @@ public class AppInitializer {
         Properties properties = System.getProperties();
         for (Object key : properties.keySet()) {
             System.out.println(key+" : "+properties.get(key));
-        }
+        }*/
+
+       /* String property = System.getProperty("os.name");
+        System.out.println(property);*/
 
     }
 
