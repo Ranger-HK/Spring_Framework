@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringBeanOne implements InitializingBean {
 
+    @Value("${ijse.application.name}")
+    private String appCom;
+
 
     //${} -> Property Placeholder  - Spring Environment
     @Value("${user.name}")
@@ -29,5 +32,6 @@ public class SpringBeanOne implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         System.out.println(osName);
         System.out.println(log);
+        System.out.println(appCom);
     }
 }
