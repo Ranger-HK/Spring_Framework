@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @project Spring_Framework
  */
 @RestController
-@RequestMapping("controllerone")
+@RequestMapping("controllerone") //Handler Method
 public class ControllerOne {
 
     public ControllerOne() {
         System.out.println("Controller One Instantiated");
     }
 
-    @GetMapping
+    @GetMapping //Handler Method
     public void testMethod(){
         System.out.println("Requests Received");
     }
