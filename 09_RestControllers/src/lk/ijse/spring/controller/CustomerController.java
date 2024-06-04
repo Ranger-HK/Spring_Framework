@@ -1,8 +1,6 @@
 package lk.ijse.spring.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Created By Ravindu Prathibha
@@ -24,5 +22,15 @@ public class CustomerController {
     @PostMapping
     public String saveCustomer(){
         return "Customer Save and Post Method Invoked";
+    }
+
+    @DeleteMapping
+    public String deleteCustomer(){
+        return "Customer Delete and Delete Method Invoked";
+    }
+
+    @PutMapping
+    public String updateCustomer(){
+        return "Customer Update and Update Method Invoked";
     }
 }
