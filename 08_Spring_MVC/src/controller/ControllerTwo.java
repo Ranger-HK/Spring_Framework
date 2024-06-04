@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @project Spring_Framework
  */
 @Controller
-@RequestMapping("controllertwo")
+@RequestMapping("customer")
 public class ControllerTwo {
 
     @GetMapping
     public String testMethod(){
-       return "Hello Spring";
+       return "customer";
     }
 }
