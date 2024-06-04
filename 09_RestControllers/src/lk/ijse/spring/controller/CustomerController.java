@@ -10,27 +10,24 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("customer")
 public class CustomerController {
-    public CustomerController() {
-        System.out.println("Controller");
-    }
 
-    @RequestMapping
+    @GetMapping //Handler Method
     public String getAllCustomer(){
         return "Hello Customer";
     }
 
-    @PostMapping
+    @PostMapping//Handler Method
     public String saveCustomer(){
         return "Customer Save and Post Method Invoked";
     }
 
-    @DeleteMapping
+    @DeleteMapping//Handler Method
     public String deleteCustomer(){
         return "Customer Delete and Delete Method Invoked";
     }
 
-    @PutMapping
+    @PutMapping//Handler Method
     public String updateCustomer(){
-        return "Customer Update and Update Method Invoked";
+        return "Customer Update and Put Method Invoked";
     }
 }
