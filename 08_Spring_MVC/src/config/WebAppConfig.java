@@ -30,6 +30,7 @@ public class WebAppConfig implements WebMvcConfigurer {
         return internalResourceViewResolver;
     }
 
+    //introduce resources location to application context
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/views/**").addResourceLocations("views/");
