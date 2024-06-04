@@ -22,8 +22,25 @@ public class PathVariableController {
     To Do that we have to create path variables ->{1001}*/
 
 
-    @GetMapping(path = "{I001}")
+  /*  @GetMapping(path = "{I001}")
     public String test(@PathVariable("I001") String itemcode){
         return itemcode;
+    }*/
+
+  /*  @GetMapping(path = "{id}")
+    public String test2(@PathVariable String id){
+        return id;
+    }*/
+
+    @GetMapping(path = "{id}")
+    public String test2(@PathVariable("id") String id){
+        return id;
     }
+
+
+    @GetMapping(path = "{id}/{name}")
+    public String test3(@PathVariable String id, @PathVariable String name){
+        return id+""+name;
+    }
+
 }
