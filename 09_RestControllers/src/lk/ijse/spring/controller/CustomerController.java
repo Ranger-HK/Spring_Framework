@@ -1,5 +1,6 @@
 package lk.ijse.spring.controller;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,5 +19,10 @@ public class CustomerController {
     @RequestMapping
     public String getAllCustomer(){
         return "Hello Customer";
+    }
+
+    @PostMapping
+    public String saveCustomer(){
+        return "Customer Save and Post Method Invoked";
     }
 }
