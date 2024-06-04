@@ -17,11 +17,22 @@ public class CustomerController {
         return "All Customer Get and Get Method Invoked";
     }
 
-   /* @GetMapping //Handler Mapping
+   /*
+   Error-- Cant Use Same Method Towise in same controller
+
+   @GetMapping //Handler Mapping
     //Handler Method
     public String searchCustomer(){
         return "Customer Search and Post Method Invoked";
     }*/
+
+    //Solution For It - use Attribute
+
+     @GetMapping(path = "search") //Handler Mapping
+    //Handler Method
+    public String searchCustomer(){
+        return "Customer Search and Post Method Invoked";
+    }
 
     @PostMapping//Handler Method
     // Handler Method
