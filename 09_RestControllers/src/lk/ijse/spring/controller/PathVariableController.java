@@ -27,14 +27,14 @@ public class PathVariableController {
         return itemcode;
     }*/
 
-  /*  @GetMapping(path = "{id}")
-    public String test2(@PathVariable String id){
-        return id;
-    }*/
-
     @GetMapping(path = "{id}")
-    public String test2(@PathVariable("id") String id){
+    public String test1(@PathVariable String id){
         return id;
+    }
+
+    @GetMapping(path = "{id}") // setting alias when parameter names
+    public String test2(@PathVariable("id") String itemcode){
+        return itemcode;
     }
 
 
