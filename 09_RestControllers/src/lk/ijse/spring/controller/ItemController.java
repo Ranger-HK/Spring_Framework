@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("item")
 public class ItemController {
 
-    @GetMapping //Handler Mapping
-    //Handler Method
+    @GetMapping
     public String getAllItems(){
         return "All Items Get and Get Method Invoked";
     }
