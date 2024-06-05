@@ -27,7 +27,7 @@ public class PathVariableController {
         return itemcode;
     }*/
 
-    @GetMapping(path = "{id}")
+   /* @GetMapping(path = "{id}")
     public String test1(@PathVariable String id){
         return id;
     }
@@ -41,6 +41,12 @@ public class PathVariableController {
     @GetMapping(path = "{id}/{name}")
     public String test3(@PathVariable String id, @PathVariable String name){
         return id+""+name;
-    }
+    }*/
 
+
+    // use regex to validate
+    @GetMapping(path = "{id:[a-z]{3}}")
+    public String test1(@PathVariable String id){
+        return id;
+    }
 }
