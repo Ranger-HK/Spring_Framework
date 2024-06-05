@@ -21,5 +21,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="SpringFramework" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.81" level="application_server_libraries" />
+    <orderEntry type="library" name="jackson-annotations-2.13.5" level="project" />
   </component>
 </module>

@@ -9,6 +9,7 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="SpringFramework" />
+          <element id="library" level="project" name="jackson-annotations-2.13.5" />
         </element>
       </element>
     </root>
