@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("params")
 public class ParamsController {
 
- /*   @GetMapping(params = {"id","name"})
+   /* @GetMapping(params = {"id","name"})
     public String test1(){
         return "Hello 1";
     }*/
@@ -35,11 +35,11 @@ public class ParamsController {
         return "Hello 3"+" "+name+" "+mySalary;
     }*/
 
-    //Fix Using @RequestParam
+   /* //Fix Using @RequestParam
     @GetMapping(params = {"name","salary"})
     public String test3(@RequestParam String name,@RequestParam("salary") double mySalary){
         return "Hello 3"+" "+name+" "+mySalary;
-    }
+    }*/
 
 
     //use path and params
