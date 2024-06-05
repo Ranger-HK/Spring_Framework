@@ -41,4 +41,11 @@ public class ParamsController {
         return "Hello 3"+" "+name+" "+mySalary;
     }
 
+
+    //use path and params
+    @GetMapping(path = "one",params = {"id"})
+    public String test1(String id){
+        return "Hello 1"+" "+id;
+    }
+
 }
