@@ -32,6 +32,9 @@ public class CustomerController {
     }
 
 
+    //consumes = if we put consumes type that means you have to put content type header in the request
+    //produce = if you want to state that what you are going to produce from here you can use produced header
+    //also put the accept header in the request header
     @GetMapping(consumes = "application/json",produces = "application/json")
     public CustomerDTO testMethod(){
         return new CustomerDTO("C002", "Ravindu", "Bandaragama", 100000.00);
