@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="10_SpringWithMaven" />
+        <module name="12_Spring_Data_JPA" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="10_SpringWithMaven" target="8" />
+      <module name="12_Spring_Data_JPA" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
