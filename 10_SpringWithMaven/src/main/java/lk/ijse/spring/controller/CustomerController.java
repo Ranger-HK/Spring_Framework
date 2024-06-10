@@ -30,4 +30,11 @@ public class CustomerController {
     public CustomerDTO searchCustomer() {
         return new CustomerDTO("C002", "Ravindu", "Bandaragama", 100000.00);
     }
+
+
+    @GetMapping(consumes = "application/json",produces = "application/json")
+    public CustomerDTO testMethod(){
+        return new CustomerDTO("C002", "Ravindu", "Bandaragama", 100000.00);
+
+    }
 }
