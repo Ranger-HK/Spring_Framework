@@ -169,13 +169,13 @@
         $("#tblCustomerJson").empty();
         $.ajax({
             //url: "customer",
-            url:"http://localhost:8080/09_Filters_Web_exploded/customer?option=GETALL",
+            url:"http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer",
             method: "GET",
             //dataType:"json",// please convert to the response
             success: function (resp) {
                 console.log(resp);
-                for (const customer of resp.data) {
-                    let row = `<tr><td>${customer.customerId}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.salary}</td></tr>`
+                for (const customer of resp) {
+                    let row = `<tr><td>${customer.id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.salary}</td></tr>`
                     $("#tblCustomerJson").append(row);
                 }
                 bindClickEvents();
