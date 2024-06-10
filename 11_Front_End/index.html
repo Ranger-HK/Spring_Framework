@@ -78,13 +78,25 @@
     });
 
 
+    $("#cusID").on("keypress",function (e){
+        if (e.key=="Enter"){
+            var customerID=$("#cusID").val();
+            $.ajax({
+                url: "http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer"+customerID,
+                method: "GET",
+                success: function (res) {
+                   console.log(res);
+
+                }
+            });
+    }
 
     //Save Customer -- data send type-->>> x-www form urlencoded
     $("#btnSaveCustomer").click(function () {
         let data = $("#customerForm").serialize(); //return query string of form with name:type
         console.log(data);
         $.ajax({
-            url: "http://localhost:8080/09_Filters_Web_exploded/customer",
+            url: "http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer",
             method: "POST",
             data: data,//if we send data with the request
             success: function (resp) {
@@ -109,7 +121,7 @@
         let customerID = $("#cusID").val();
 
         $.ajax({
-            url:"http://localhost:8080/09_Filters_Web_exploded/customer?CusID="+customerID,
+            url:"http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer?id="+customerID,
             method: "DELETE",
             success: function (res) {
                 if (res.status==200){
@@ -142,7 +154,7 @@
         }
 
         $.ajax({
-            url:"http://localhost:8080/09_Filters_Web_exploded/customer",
+            url:"http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer",
             method:"PUT",
             contentType:"application/json", //you should state request content type using MIME types
             data:JSON.stringify(cusOb), //format js object to valid json object
