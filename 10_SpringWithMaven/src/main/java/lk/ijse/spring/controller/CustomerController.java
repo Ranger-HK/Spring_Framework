@@ -25,6 +25,7 @@ public class CustomerController {
         return new CustomerDTO("C001", "Ravindu", "Bandaragama", 100000.00);
     }
 
+    //consumes --> application/json (requests body should include content-type=application/json
     @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE) //content-type=application/json
     public CustomerDTO searchCustomer() {
         return new CustomerDTO("C002", "Ravindu", "Bandaragama", 100000.00);
