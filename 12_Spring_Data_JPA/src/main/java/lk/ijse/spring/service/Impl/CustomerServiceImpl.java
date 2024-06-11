@@ -21,6 +21,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepo customerRepo;
 
+    @Override
+    public List<Customer> getAllCustomers() {
+        return customerRepo.findAll();
+    }
 
     @Override
     public void saveCustomer(Customer entity) {
@@ -39,8 +43,6 @@ public class CustomerServiceImpl implements CustomerService {
             throw new RuntimeException("Please Check the ID..! No Such Customer");
 
         }
-
-
     }
 
     @Override
@@ -55,13 +57,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer searchCustomer(String id) {
-        return customerRepo.findById(id).get();
+        if (customerRepo.existsById(id)) {
+            return customerRepo.findById(id).get();
+        }else {
+            throw new RuntimeException("No Customer For"+id+"..!");
+        }
     }
 
-    @Override
-    public List<Customer> getAllCustomers() {
-        return customerRepo.findAll();
-    }
 }
 
 
