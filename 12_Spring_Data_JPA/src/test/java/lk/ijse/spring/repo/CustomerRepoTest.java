@@ -17,19 +17,20 @@ import static org.junit.jupiter.api.Assertions.*;
  * @project Spring_Framework
  */
 
-@WebAppConfiguration
-@ContextConfiguration(classes = {JPAConfig.class})
-@ExtendWith(SpringExtension.class)
+@WebAppConfiguration //State test configuration class
+@ContextConfiguration(classes = {JPAConfig.class}) //Import configurations for text context
+@ExtendWith(SpringExtension.class) //Run with Spring Extension
 class CustomerRepoTest {
 
     @Autowired
-    CustomerRepo customerRepo;
+    CustomerRepo customerRepo; //Inject the dependency of customer Repo
 
-    @Test
+    @Test //Test Method
     public void saveCustomer(){
+        //Ok lets save a customer using Customer Repo
        Customer customer1 = new Customer("C001", "Ravindu", "Bandaragama", 100000);
        Customer customer2 = new Customer("C002", "Kamal", "Panadura", 20000);
-       Customer customer3 =new Customer("C003", "Nimal", "Colombo", 30000);
+       Customer customer3 = new Customer("C003", "Nimal", "Colombo", 30000);
 
        customerRepo.save(customer1);
        customerRepo.save(customer2);
