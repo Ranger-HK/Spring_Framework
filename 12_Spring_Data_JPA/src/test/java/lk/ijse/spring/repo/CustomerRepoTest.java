@@ -9,6 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -36,5 +38,15 @@ class CustomerRepoTest {
        customerRepo.save(customer2);
        customerRepo.save(customer3);
     }
+
+
+    @Test
+    public void getAllCustomers(){
+        List<Customer>all=customerRepo.findAll();
+        for (Customer customer : all) {
+            System.out.println(customer.toString());
+        }
+    }
+
 
 }
