@@ -10,10 +10,29 @@ import java.util.List;
  * @project Spring_Framework
  */
 public class CustomerServiceImpl {
-    public void saveCustomer(){}
-    public void deleteCustomer(){}
-    public void updateCustomer(){}
-    public Customer searchCustomer(){}
-    public List<Customer> getAllCustomer(){}
+    public void saveCustomer(Customer entity) {
+
+    }
+
+    public void deleteCustomer(String id) {
+
+
+    }
+
+    public void updateCustomer(Customer entity) {
+
+
+    }
+
+    public Customer searchCustomer(String id) {
+
+    }
+
+    public List<Customer> getAllCustomer() {
+
+    }
+}
+
+
 
 
