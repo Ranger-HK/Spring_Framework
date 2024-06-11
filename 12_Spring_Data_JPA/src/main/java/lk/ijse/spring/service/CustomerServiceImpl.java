@@ -38,7 +38,7 @@ public class CustomerServiceImpl {
         return customerRepo.findById(id).get();
     }
 
-    public List<Customer> getAllCustomer() {
+    public List<Customer> getAllCustomers() {
         return customerRepo.findAll();
     }
 }
