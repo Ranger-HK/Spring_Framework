@@ -27,7 +27,7 @@ public class JPAConfig {
 
     //Create BeanFactory
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource ds, JpaVendorAdapter va){
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource ds, JpaVendorAdapter va){
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
         bean.setJpaVendorAdapter(va); //Vendor (Hibernate)
         bean.setDataSource(ds); //Connection
