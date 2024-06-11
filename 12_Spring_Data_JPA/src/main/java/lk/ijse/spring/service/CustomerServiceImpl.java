@@ -1,6 +1,8 @@
 package lk.ijse.spring.service;
 
 import lk.ijse.spring.entity.Customer;
+import lk.ijse.spring.repo.CustomerRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -10,26 +12,30 @@ import java.util.List;
  * @project Spring_Framework
  */
 public class CustomerServiceImpl {
-    public void saveCustomer(Customer entity) {
 
+    @Autowired
+    private CustomerRepo customerRepo;
+
+    public void saveCustomer(Customer entity) {
+        customerRepo.save(entity);
     }
 
     public void deleteCustomer(String id) {
-
+        customerRepo.deleteById(id);
 
     }
 
     public void updateCustomer(Customer entity) {
-
+        customerRepo.save(entity);
 
     }
 
     public Customer searchCustomer(String id) {
-
+        return customerRepo.findById(id).get();
     }
 
     public List<Customer> getAllCustomer() {
-
+        return customerRepo.findAll();
     }
 }
 
