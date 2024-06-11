@@ -10,6 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,6 +41,7 @@ class CustomerRepoTest {
     }
 
 
+    //get all customer list
     @Test
     public void getAllCustomers(){
         List<Customer>all=customerRepo.findAll();
@@ -48,5 +50,15 @@ class CustomerRepoTest {
         }
     }
 
+    //Search Customer
+    @Test
+    public void searchCustomer(){
+        Optional<Customer>optional=customerRepo.findById("C001");
+        boolean present = optional.isPresent();
+        System.out.println(present);
+
+        Customer customer = optional.get();
+        System.out.println(customer.toString());
+    }
 
 }
