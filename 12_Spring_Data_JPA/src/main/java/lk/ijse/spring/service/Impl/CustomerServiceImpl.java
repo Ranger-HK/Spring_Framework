@@ -39,7 +39,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(Customer entity) {
-        customerRepo.save(entity);
+        if (customerRepo.existsById(entity.getId())) {
+            customerRepo.save(entity);
+        } else {
+            throw new RuntimeException("No Such Customer To Update..! Please Check the ID..!");
+        }
 
     }
 

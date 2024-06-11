@@ -29,4 +29,9 @@ public class CustomerController {
     public void saveCustomer(@ModelAttribute Customer customer){
         customerService.saveCustomer(customer);
     }
+
+    @PutMapping
+    public void updateCustomer(@RequestBody Customer customer){
+        customerService.updateCustomer(customer);
+    }
 }
