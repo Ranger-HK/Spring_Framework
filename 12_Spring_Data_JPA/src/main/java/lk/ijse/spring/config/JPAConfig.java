@@ -3,11 +3,14 @@ package lk.ijse.spring.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 /**
@@ -28,7 +31,7 @@ public class JPAConfig {
         return bean;
     }
 
-    //Create Connection
+    //Introduce Connection
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -39,7 +42,7 @@ public class JPAConfig {
         return dataSource;
     }
 
-    //Create Vendor (Hibernate)
+    //Introduce Vendor (Hibernate)
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(){
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
@@ -49,6 +52,12 @@ public class JPAConfig {
         hibernateJpaVendorAdapter.setGenerateDdl(true);
         return hibernateJpaVendorAdapter;
 
+    }
+
+    //Introduce Transaction Manager
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory){
+        return new JpaTransactionManager(entityManagerFactory);
     }
 
 
