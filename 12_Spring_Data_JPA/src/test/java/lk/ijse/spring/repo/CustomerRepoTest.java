@@ -61,4 +61,16 @@ class CustomerRepoTest {
         System.out.println(customer.toString());
     }
 
+    //Delete Customer
+    @Test
+    public void deleteCustomer(){
+        customerRepo.deleteById("C003");
+    }
+
+    //Update Customer
+    public void updateCustomer(){
+        Customer customer3 = new Customer("C003", "Nimal", "Colombo", 30000);
+        customerRepo.save(customer3);
+    }
+
 }
