@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="13_Model_Mapper:war">
+    <output-path>$PROJECT_DIR$/13_Model_Mapper/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>13_Model_Mapper</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="13_Model_Mapper-1.0.0.war">
+      <element id="artifact" artifact-name="13_Model_Mapper:war exploded" />
+    </root>
+  </artifact>
+</component>
