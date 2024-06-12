@@ -1,5 +1,6 @@
 package lk.ijse.spring.service.Impl;
 
+import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.repo.CustomerRepo;
 import lk.ijse.spring.service.CustomerService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,14 +24,21 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepo customerRepo;
 
     @Override
-    public List<Customer> getAllCustomers() {
-        return customerRepo.findAll();
+    public List<CustomerDTO> getAllCustomers() {
+
+        List<Customer> all = customerRepo.findAll();
+        ArrayList<CustomerDTO> arrayList = new ArrayList<>();
+        for (Customer customer : all) {
+            arrayList.add(new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress(), customer.getSalary()));
+        }
+        return arrayList;
     }
 
     @Override
-    public void saveCustomer(Customer entity) {
-        if (!customerRepo.existsById(entity.getId())) {
-            customerRepo.save(entity);
+    public void saveCustomer(CustomerDTO customerDTO) {
+        if (!customerRepo.existsById(customerDTO.getId())) {
+            Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
+            customerRepo.save(customer);
         } else {
             throw new RuntimeException("Customer Already Exist...!");
         }
@@ -46,9 +55,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void updateCustomer(Customer entity) {
-        if (customerRepo.existsById(entity.getId())) {
-            customerRepo.save(entity);
+    public void updateCustomer(CustomerDTO customerDTO) {
+        if (customerRepo.existsById(customerDTO.getId())) {
+            Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
+            customerRepo.save(customer);
         } else {
             throw new RuntimeException("No Such Customer To Update..! Please Check the ID..!");
         }
@@ -56,11 +66,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer searchCustomer(String id) {
+    public CustomerDTO searchCustomer(String id) {
         if (customerRepo.existsById(id)) {
-            return customerRepo.findById(id).get();
-        }else {
-            throw new RuntimeException("No Customer For"+id+"..!");
+
+            Customer customer = customerRepo.findById(id).get();
+            return new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress(), customer.getSalary());
+        } else {
+            throw new RuntimeException("No Customer For" + id + "..!");
         }
     }
 
