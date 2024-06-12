@@ -38,7 +38,7 @@
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-primary" id="btnSaveCustomer" type="button">Save</button>
-                    <button type="button" id="btnUpdateCustomer" class="btn btn-warning">Update</button>
+                    <button class="btn btn-warning" id="btnUpdateCustomer" type="button">Update</button>
                     <button class="btn btn-danger" id="btnDeleteCustomer" type="button">Delete</button>
                     <button class="btn btn-success" id="btnGetAllCustomers" type="button">Get All</button>
                 </div>
@@ -72,132 +72,162 @@
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script>
 
-    //ReFresh Table After Loading
-    $("#btn3").click(function () {
-        loadCustomers();
+    var baseUrl = "http://localhost:8080/13_Model_Mapper_war_exploded/api/v1/customer"
+
+    //EVENTS -------->>>>
+
+    //Save Customer Event
+    $("#btnSaveCustomer").click(function () {
+        saveCustomer();
+    });
+
+    //Update Customer Event
+    $("#btnUpdateCustomer").click(function () {
+        updateCustomer();
+    });
+
+    //Delete Customer Event
+    $("#btnDeleteCustomer").click(function () {
+        deleteCustomer();
+    });
+
+    //Search Customer Event
+    $("#cusID").on("keypress", function (e) {
+        if (e.key == "Enter") {
+            searchCustomer();
+        }
     });
 
 
-    $("#cusID").on("keypress",function (e){
-        if (e.key=="Enter"){
-            var customerID=$("#cusID").val();
-            $.ajax({
-                url: "http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer"+customerID,
-                method: "GET",
-                success: function (res) {
-                   console.log(res);
+    //FUNCTIONS --->>>
 
+    loadCustomers();
+
+    //Load All Customers
+    function loadCustomers() {
+        $("#tblCustomerJson").empty();
+        $.ajax({
+            url: baseUrl,
+            method: "GET",
+            success: function (resp) {
+                for (const customer of resp.data) {
+                    let row = `<tr><td>${customer.id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.salary}</td></tr>`
+                    $("#tblCustomerJson").append(row);
                 }
-            });
+                bindClickEvents();
+                clearForm();
+            },
+            error: function (ob, state) {
+                console.log(ob, state);
+            }
+        });
     }
 
-    //Save Customer -- data send type-->>> x-www form urlencoded
-    $("#btnSaveCustomer").click(function () {
-        let data = $("#customerForm").serialize(); //return query string of form with name:type
-        console.log(data);
+    //Save Customer
+    function saveCustomer() {
+        var data = $("#customerForm").serialize(); //return query string of form with name:type
         $.ajax({
-            url: "http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer",
+            url: baseUrl,
             method: "POST",
             data: data,//if we send data with the request
             success: function (resp) {
-                if (resp.status==200){
-                    alert(resp.message);
+                if (resp.code == 200) {
+                    alert("Successfully Customer Saved");
                     loadCustomers();
-                }else {
-                    alert(resp.data);
+                    clearForm();
+                } else {
+                    // alert(resp.data);
                 }
             },
-            error:function (ob,textStatus,error) {
-                alert(textStatus);//content type -->>data
-                //console.log(ob.responseText);
+            error: function (ob, textStatus, error) {
+                //alert(textStatus);//content type -->>data
+                console.log(ob);
+                console.log(textStatus);
+                console.log(error);
             }
         });
 
-    });
+    }
 
+    //Update Customer
+    function updateCustomer() {
+        //creating a js object with relevant data which you wanna send to the server
+        var cusOb = {
+            id: $("#cusID").val(),
+            name: $("#cusName").val(),
+            address: $("#cusAddress").val(),
+            salary: $("#cusSalary").val()
+        }
 
-    //Delete Customer -- data send type-->> query string
-    $("#btnDeleteCustomer").click(function () {
+        $.ajax({
+            url: baseUrl,
+            method: "PUT",
+            contentType: "application/json", //you should state request content type using MIME types
+            data: JSON.stringify(cusOb), //format js object to valid json object
+            success: function (res) {
+                if (res.code == 200) { //process is ok
+                    alert(res.message);
+                    loadCustomers();
+                    clearForm();
+                } /*else if (res.status == 400) { //there is a problem with the client side
+                    alert(res.message);
+                } else {
+                    alert(res.data); //else may be there is a exception
+                }*/
+            },
+            error: function (ob, errorStus) {
+                console.log(ob); //other error
+            }
+        });
+    }
+
+    //Delete Customer
+    function deleteCustomer() {
         let customerID = $("#cusID").val();
 
         $.ajax({
-            url:"http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer?id="+customerID,
+            url: baseUrl + "?id=" + customerID,
             method: "DELETE",
             success: function (res) {
-                if (res.status==200){
-                    alert(res.message);
+                if (res.code == 200) {
+                    alert("Customer Successfully Deleted");
                     loadCustomers();
-                }else if (res.status==400){
+                    clearForm();
+                } else if (res.status == 400) {
                     alert(res.data);
-                }else {
+                } else {
                     alert(res.data);
                 }
             },
-            error:function (ob,status,t){
+            error: function (ob, status, t) {
                 console.log(ob);
                 console.log(status);
                 console.log(t);
             }
         });
-    });
+    }
 
-
-    //Update Customer -- data send type -->> json
-    $("#btnUpdateCustomer").click(function () {
-
-        //creating a js object with relevant data which you wanna send to the server
-        var cusOb = {
-            id:$("#cusID").val(),
-            name:$("#cusName").val(),
-            address:$("#cusAddress").val(),
-            salary:$("#cusSalary").val()
-        }
-
+    //Search Customer
+    function searchCustomer() {
+        var customerID = $("#cusID").val();
         $.ajax({
-            url:"http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer",
-            method:"PUT",
-            contentType:"application/json", //you should state request content type using MIME types
-            data:JSON.stringify(cusOb), //format js object to valid json object
-            success:function (res){
-                if (res.status==200){ //process is ok
-                    alert(res.message);
-                    loadCustomers();
-                }else if (res.status==400){ //there is a problem with the client side
-                    alert(res.message);
-                }else {
-                    alert(res.data); //else may be there is a exception
-                }
-            },
-            error:function (ob,errorStus){
-                console.log(ob); //other error
-            }
-        });
-    });
-
-
-    loadCustomers();
-    //Load Table -- Get Data
-    function loadCustomers() {
-        $("#tblCustomerJson").empty();
-        $.ajax({
-            //url: "customer",
-            url:"http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer",
+            url: baseUrl + "/" + customerID,
             method: "GET",
-            //dataType:"json",// please convert to the response
-            success: function (resp) {
-                console.log(resp);
-                for (const customer of resp) {
-                    let row = `<tr><td>${customer.id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.salary}</td></tr>`
-                    $("#tblCustomerJson").append(row);
+            success: function (res) {
+                if (res.code == 200) {
+                    var customer = res.data;
+                    $("#cusID").val(customer.id);
+                    $("#cusName").val(customer.name);
+                    $("#cusAddress").val(customer.address);
+                    $("#cusSalary").val(customer.salary);
                 }
-                bindClickEvents();
             }
         });
     }
 
     //Table Row Click And Load It To TextFields
-    function bindClickEvents(){
-        $("#tblCustomerJson>tr").click(function (){
+    function bindClickEvents() {
+        $("#tblCustomerJson>tr").click(function () {
             let id = $(this).children().eq(0).text();
             let name = $(this).children().eq(1).text();
             let address = $(this).children().eq(2).text();
@@ -209,6 +239,14 @@
             $("#cusAddress").val(address);
             $("#cusSalary").val(salary);
         });
+    }
+
+    function clearForm() {
+        $("#cusID").val("");
+        $("#cusName").val("");
+        $("#cusAddress").val("");
+        $("#cusSalary").val("");
+        $("#cusID").focus();
     }
 
 
