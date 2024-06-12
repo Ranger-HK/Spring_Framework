@@ -1,7 +1,10 @@
 package lk.ijse.spring.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -23,7 +26,11 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "lk.ijse.spring.repo")
+@PropertySource("classpath:application.properties") //introduce resources bundel to spring context
 public class JPAConfig {
+
+    @Autowired
+    Environment env;
 
     //Create BeanFactory
     @Bean
@@ -31,7 +38,7 @@ public class JPAConfig {
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
         bean.setJpaVendorAdapter(va); //Vendor (Hibernate)
         bean.setDataSource(ds); //Connection
-        bean.setPackagesToScan("lk.ijse.spring.entity"); //Location of the entity
+        bean.setPackagesToScan(env.getRequiredProperty("entity.package.name")); //Location of the entity
         return bean;
     }
 
@@ -39,10 +46,10 @@ public class JPAConfig {
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/springjpa?createDatabaseIfNotExist=true");
-        dataSource.setUsername("root");
-        dataSource.setPassword("19990202Ravi@:&pra");
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl(env.getRequiredProperty("my.app.url"));
+        dataSource.setUsername(env.getRequiredProperty("my.app.username"));
+        dataSource.setPassword(env.getRequiredProperty("my.app.password"));
+        dataSource.setDriverClassName(env.getRequiredProperty("my.app.driverclassname"));
         return dataSource;
     }
 
@@ -50,7 +57,7 @@ public class JPAConfig {
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(){
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        hibernateJpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
+        hibernateJpaVendorAdapter.setDatabasePlatform(env.getRequiredProperty("my.app.dialect"));
         hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);
         hibernateJpaVendorAdapter.setShowSql(true);
         hibernateJpaVendorAdapter.setGenerateDdl(true);
