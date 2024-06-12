@@ -47,6 +47,9 @@ public class JPAConfig {
     //Introduce Connection
     @Bean
     public DataSource dataSource() throws NamingException {
+
+        //Driver Manager Data Source
+
        /* DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl(env.getRequiredProperty("my.app.url"));
         dataSource.setUsername(env.getRequiredProperty("my.app.username"));
@@ -54,6 +57,7 @@ public class JPAConfig {
         dataSource.setDriverClassName(env.getRequiredProperty("my.app.driverclassname"));
         return dataSource;*/
 
+        //JNDI Data Source
         return (DataSource) new JndiTemplate().lookup("java:comp/env/jdbc/pool");
     }
 
