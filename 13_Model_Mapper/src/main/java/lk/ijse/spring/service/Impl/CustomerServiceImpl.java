@@ -4,6 +4,8 @@ import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.repo.CustomerRepo;
 import lk.ijse.spring.service.CustomerService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,22 +25,37 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepo customerRepo;
 
+    @Autowired
+    private ModelMapper mapper;
+
     @Override
     public List<CustomerDTO> getAllCustomers() {
 
-        List<Customer> all = customerRepo.findAll();
-        ArrayList<CustomerDTO> arrayList = new ArrayList<>();
+       /* List<Customer> all = customerRepo.findAll();
+        List<CustomerDTO> arrayList = new ArrayList<>();
         for (Customer customer : all) {
             arrayList.add(new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress(), customer.getSalary()));
         }
-        return arrayList;
+
+        return arrayList;*/
+
+        List<Customer> all = customerRepo.findAll();
+        return mapper.map(all,new TypeToken< List<CustomerDTO>>(){}.getType());
+
     }
 
     @Override
     public void saveCustomer(CustomerDTO customerDTO) {
         if (!customerRepo.existsById(customerDTO.getId())) {
-            Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
-            customerRepo.save(customer);
+
+            // 01.Source --> Main Source
+            // 02.Destination Type --> Class Type Which We Want To Convert The Source
+            //Convert DTO To Entity
+            Customer entity = mapper.map(customerDTO, Customer.class);//source and destination type
+
+            // Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
+
+            customerRepo.save(entity);
         } else {
             throw new RuntimeException("Customer Already Exist...!");
         }
@@ -57,20 +74,30 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void updateCustomer(CustomerDTO customerDTO) {
         if (customerRepo.existsById(customerDTO.getId())) {
-            Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
-            customerRepo.save(customer);
+
+            //Convert DTO To Entity
+            Customer entity = mapper.map(customerDTO, Customer.class);
+            //Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
+
+            customerRepo.save(entity);
         } else {
             throw new RuntimeException("No Such Customer To Update..! Please Check the ID..!");
         }
 
     }
 
+
+
     @Override
     public CustomerDTO searchCustomer(String id) {
         if (customerRepo.existsById(id)) {
 
             Customer customer = customerRepo.findById(id).get();
-            return new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress(), customer.getSalary());
+
+            //Convert Entity To DTO
+            return mapper.map(customer, CustomerDTO.class);
+            //return new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress(), customer.getSalary());
+
         } else {
             throw new RuntimeException("No Customer For" + id + "..!");
         }
