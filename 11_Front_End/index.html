@@ -126,24 +126,20 @@
     //Save Customer
     function saveCustomer() {
         var data = $("#customerForm").serialize(); //return query string of form with name:type
-        console.log("1s")
         $.ajax({
             url: baseUrl,
             method: "POST",
             data: data, //if we send data with the request
-            success: function (resp) {
-                console.log("2s")
-                if (resp.code == 200) {
-                    console.log("3s")
+            success: function (res) {
+                if (res.code == 200) { //process is ok
                     alert("Successfully Customer Saved");
                     loadCustomers();
                     clearForm();
                 } else {
-
+                    alert(res.message)
                 }
             },
             error: function (ob, textStatus, error) {
-                console.log("4s")
                 console.log(ob);
                 console.log(textStatus);
                 console.log(error);
