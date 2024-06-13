@@ -34,6 +34,11 @@ class CustomerServiceImplTest {
     @Test
     void getAllCustomers() {
 
+    }
+
+    @Test
+    void saveCustomer() {
+
       /*  //If is a new customer it should be added to the database
         CustomerDTO customerDTO1 = new CustomerDTO("C001", "Kamal", "Kaluthara", 100);
         customerService.saveCustomer(customerDTO1);*/
@@ -60,10 +65,6 @@ class CustomerServiceImplTest {
             customerService.saveCustomer(customerDTO2);
         });
 
-    }
-
-    @Test
-    void saveCustomer() {
     }
 
     @Test
