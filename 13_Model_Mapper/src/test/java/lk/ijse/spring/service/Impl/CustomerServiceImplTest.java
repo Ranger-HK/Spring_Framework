@@ -96,11 +96,42 @@ class CustomerServiceImplTest {
 
     @Test
     void deleteCustomer() {
+        //Add Customer Multiple
+        addCustomers();
+
+        //Delete an Existing Customer
+        //Assertion Method Using --> Can't Throw the Error
+        assertDoesNotThrow(() -> {
+            customerService.deleteCustomer("C001");
+        });
+
+
+        //Delete an Not Existing Customer
+        //Assertion Method Using --> Must be Throw the Error
+        assertThrows(RuntimeException.class, () -> {
+            customerService.deleteCustomer("C011");
+        });
 
     }
 
     @Test
     void updateCustomer() {
+        //Add Customer Multiple
+        addCustomers();
+
+        //Update an Existing Customer
+        //Assertion Method Using --> Can't Throw the Error
+        assertDoesNotThrow(() -> {
+            customerService.updateCustomer(new CustomerDTO("C001", "Kamal", "Kaluthara", 500));
+        });
+
+
+        //Update an Not Existing Customer
+        //Assertion Method Using --> Must be Throw the Error
+        assertThrows(RuntimeException.class, () -> {
+            customerService.updateCustomer(new CustomerDTO("C011", "Kamal", "Kaluthara", 500));
+        });
+
 
     }
 
