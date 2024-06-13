@@ -75,10 +75,22 @@ class CustomerRepoTest {
     }
 
 
-
     @Test
     public void testDTO(){
         CustomerDTO customerDTO = new CustomerDTO("","","",10);
     }
+
+    @Test
+    public void findCustomerByName(){
+        Customer ravindu = customerRepo.findCustomerByName("Ravindu");
+        System.out.println(ravindu.toString());
+    }
+
+    @Test
+    public void findCustomerByAddress(){
+        Customer ravindu = customerRepo.findCustomerByAddress("Nevada");
+        System.out.println(ravindu.toString());
+    }
+
 
 }
