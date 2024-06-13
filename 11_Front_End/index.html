@@ -135,14 +135,10 @@
                     alert("Successfully Customer Saved");
                     loadCustomers();
                     clearForm();
-                } else {
-                    alert(res.message)
                 }
             },
-            error: function (ob, textStatus, error) {
-                console.log(ob);
-                console.log(textStatus);
-                console.log(error);
+            error: function (ob) {
+                alert(ob.responseJSON.message)
             }
         });
     }
