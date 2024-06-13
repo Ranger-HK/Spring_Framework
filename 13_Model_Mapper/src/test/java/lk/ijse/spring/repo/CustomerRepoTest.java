@@ -111,4 +111,10 @@ class CustomerRepoTest {
         System.out.println(ravindu.toString());
     }
 
+    //Read Customer Using Name
+    @Test
+    public void readCustomerByName(){
+        Customer ravindu = customerRepo.readCustomerByName("Ravindu");
+        System.out.println(ravindu.toString());
+    }
 }

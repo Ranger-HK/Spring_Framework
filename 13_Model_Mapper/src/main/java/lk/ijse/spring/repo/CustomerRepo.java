@@ -12,6 +12,23 @@ public interface CustomerRepo extends JpaRepository<Customer,String> {
 
     //Query Methods Using
 
+    //KEYWORDS --->>> 10 Keywords Have
+
+    //findBy
+    //readBy
+    //getBY         --->>  Return One Entity Or List
+    //queryBy
+    //searchBy
+    //streamBy
+
+
+    //existBy -->boolean
+    //CountBy --> number    --->>     Return boolean and number
+
+    //deleteBy          ---->>>  No Return Type (Void Type)
+    //removeBy
+
+
     //Find Customer Using Name
     Customer findCustomerByName(String name);
 
@@ -24,6 +41,8 @@ public interface CustomerRepo extends JpaRepository<Customer,String> {
     //Find Customer Using Name And Address
     Customer findCustomerByNameAndAddress(String name,String address);
 
+    //Read Customer Using Name
+    Customer readCustomerByName(String name);
 
 
 }
