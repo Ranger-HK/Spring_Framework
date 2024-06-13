@@ -11,6 +11,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -27,14 +29,39 @@ class CustomerServiceImplTest {
     @Autowired
     CustomerService customerService; //Inject the Dependency Customer Service
 
+    //Add One Customer for Testing
     public CustomerDTO addTestCustomer() {
         return new CustomerDTO("C001", "Kamal", "Kaluthara", 100);
+    }
+
+    //Add Multiple Customer for Testing
+    public void addCustomers() {
+        CustomerDTO c1 = new CustomerDTO("C001", "Kamal", "Kaluthara", 100);
+        CustomerDTO c2 = new CustomerDTO("C002", "Amal", "Bagama", 200);
+        CustomerDTO c3 = new CustomerDTO("C003", "Nimal", "Hagama", 300);
+        CustomerDTO c4 = new CustomerDTO("C004", "Dumal", "Godagama", 400);
+        customerService.saveCustomer(c1);
+        customerService.saveCustomer(c2);
+        customerService.saveCustomer(c3);
+        customerService.saveCustomer(c4);
+
     }
 
     @Test
     void getAllCustomers() {
 
+        //Add multiple customers
+        addCustomers();
+
+        List<CustomerDTO> allCustomers = customerService.getAllCustomers();
+        for (CustomerDTO allCustomer : allCustomers) {
+            System.out.println(allCustomer.toString());
+        }
+
+        //Test Customer availability
+        assertNotNull(allCustomers);
     }
+
 
     @Test
     void saveCustomer() {
@@ -69,10 +96,12 @@ class CustomerServiceImplTest {
 
     @Test
     void deleteCustomer() {
+
     }
 
     @Test
     void updateCustomer() {
+
     }
 
     @Test
