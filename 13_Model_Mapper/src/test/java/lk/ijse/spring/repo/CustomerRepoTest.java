@@ -90,6 +90,13 @@ class CustomerRepoTest {
         System.out.println(ravindu.toString());
     }
 
+    //Find Customer Using Name -- With out Mention Subject
+    @Test
+    public void findByName(){
+        Customer ravindu = customerRepo.findByName("Ravindu");
+        System.out.println(ravindu.toString());
+    }
+
     //Find Customer Using Address
     @Test
     public void findCustomerByAddress(){
