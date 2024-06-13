@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CustomerServiceImplTest {
 
     @Autowired
-    CustomerService customerService;
+    CustomerService customerService; //Inject the Dependency Customer Service
 
     public CustomerDTO addTestCustomer() {
         return new CustomerDTO("C001", "Kamal", "Kaluthara", 100);
