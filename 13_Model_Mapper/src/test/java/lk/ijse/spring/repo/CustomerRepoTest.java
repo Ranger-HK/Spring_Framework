@@ -117,4 +117,43 @@ class CustomerRepoTest {
         Customer ravindu = customerRepo.readCustomerByName("Ravindu");
         System.out.println(ravindu.toString());
     }
+
+    //Get Customer Using Name
+    @Test
+    public void getCustomerByName(){
+        Customer ravindu = customerRepo.getCustomerByName("Ravindu");
+        System.out.println(ravindu.toString());
+    }
+
+    //Query Customer Using Name
+    @Test
+    public void queryCustomerByName(){
+        Customer ravindu = customerRepo.queryCustomerByName("Ravindu");
+        System.out.println(ravindu.toString());
+    }
+
+   /* //Search Customer Using Name (Return Entity)
+    @Test
+    public void searchCustomerByName(){
+        Customer ravindu = customerRepo.searchCustomerByName("Ravindu");
+        System.out.println(ravindu.toString());
+    }*/
+
+      //Search Customer List Using Name ( Return List)
+    @Test
+    public void searchCustomerByName(){
+        List<Customer> customers = customerRepo.searchCustomerByName("Ravindu");
+        for (Customer customer : customers) {
+            System.out.println(customer.toString());
+        }
+    }
+
+    //Stream Customer Using Name
+    @Test
+    public void streamCustomerByName(){
+        Customer ravindu = customerRepo.streamCustomerByName("Ravindu");
+        System.out.println(ravindu.toString());
+    }
+
+
 }
