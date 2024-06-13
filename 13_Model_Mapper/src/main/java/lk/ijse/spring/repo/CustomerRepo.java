@@ -10,7 +10,7 @@ import java.util.List;
  * @created 6/11/2024 - 10:40 AM
  * @project Spring_Framework
  */
-public interface CustomerRepo extends JpaRepository<Customer,String> {
+public interface CustomerRepo extends JpaRepository<Customer, String> {
 
     //Query Methods Using
 
@@ -41,7 +41,7 @@ public interface CustomerRepo extends JpaRepository<Customer,String> {
     Customer findCustomerByAddress(String address);
 
     //Find Customer Using Name And Address
-    Customer findCustomerByNameAndAddress(String name,String address);
+    Customer findCustomerByNameAndAddress(String name, String address);
 
     //Read Customer Using Name
     Customer readCustomerByName(String name);
@@ -58,12 +58,16 @@ public interface CustomerRepo extends JpaRepository<Customer,String> {
     //Search Customer List Using Name ( Return List)
     List<Customer> searchCustomerByName(String name);
 
-
     //Stream Customer Using Name
     Customer streamCustomerByName(String name);
 
+    //Exist Customer Using Name
 
+    //Count Customer Using Name
 
+    //DeleteBy Customer Using Name
+
+    //Remove Customer Using Name
 
 
 }

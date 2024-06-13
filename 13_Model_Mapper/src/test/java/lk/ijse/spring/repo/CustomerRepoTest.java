@@ -30,22 +30,22 @@ class CustomerRepoTest {
     CustomerRepo customerRepo; //Inject the dependency of customer Repo
 
     @Test //Test Method
-    public void saveCustomer(){
+    public void saveCustomer() {
         //Ok lets save a customer using Customer Repo
-       Customer customer1 = new Customer("C001", "Ravindu", "Bandaragama", 100000);
-       Customer customer2 = new Customer("C002", "Kamal", "Panadura", 20000);
-       Customer customer3 = new Customer("C003", "Nimal", "Colombo", 30000);
+        Customer customer1 = new Customer("C001", "Ravindu", "Bandaragama", 100000);
+        Customer customer2 = new Customer("C002", "Kamal", "Panadura", 20000);
+        Customer customer3 = new Customer("C003", "Nimal", "Colombo", 30000);
 
-       customerRepo.save(customer1);
-       customerRepo.save(customer2);
-       customerRepo.save(customer3);
+        customerRepo.save(customer1);
+        customerRepo.save(customer2);
+        customerRepo.save(customer3);
     }
 
 
     //get all customer list
     @Test
-    public void getAllCustomers(){
-        List<Customer>all=customerRepo.findAll();
+    public void getAllCustomers() {
+        List<Customer> all = customerRepo.findAll();
         for (Customer customer : all) {
             System.out.println(customer.toString());
         }
@@ -53,31 +53,31 @@ class CustomerRepoTest {
 
     //Search Customer
     @Test
-    public void searchCustomer(){
-        Optional<Customer>optional=customerRepo.findById("C001");
+    public void searchCustomer() {
+        Optional<Customer> optional = customerRepo.findById("C001");
         boolean present = optional.isPresent();
         System.out.println(present);
 
         Customer customer = optional.get();
-        System.out.println(customer.toString());
+        System.out.println(customer);
     }
 
     //Delete Customer
     @Test
-    public void deleteCustomer(){
+    public void deleteCustomer() {
         customerRepo.deleteById("C003");
     }
 
     //Update Customer
-    public void updateCustomer(){
+    public void updateCustomer() {
         Customer customer3 = new Customer("C003", "Nimal", "Colombo", 30000);
         customerRepo.save(customer3);
     }
 
 
     @Test
-    public void testDTO(){
-        CustomerDTO customerDTO = new CustomerDTO("","","",10);
+    public void testDTO() {
+        CustomerDTO customerDTO = new CustomerDTO("", "", "", 10);
     }
 
 
@@ -85,49 +85,49 @@ class CustomerRepoTest {
 
     //Find Customer Using Name
     @Test
-    public void findCustomerByName(){
+    public void findCustomerByName() {
         Customer ravindu = customerRepo.findCustomerByName("Ravindu");
         System.out.println(ravindu.toString());
     }
 
     //Find Customer Using Name -- With out Mention Subject
     @Test
-    public void findByName(){
+    public void findByName() {
         Customer ravindu = customerRepo.findByName("Ravindu");
         System.out.println(ravindu.toString());
     }
 
     //Find Customer Using Address
     @Test
-    public void findCustomerByAddress(){
+    public void findCustomerByAddress() {
         Customer ravindu = customerRepo.findCustomerByAddress("Nevada");
         System.out.println(ravindu.toString());
     }
 
     //Find Customer Using Name And Address
     @Test
-    public void findCustomerByNameAndAddress(){
-        Customer ravindu = customerRepo.findCustomerByNameAndAddress("Ravindu","Bandaragama");
+    public void findCustomerByNameAndAddress() {
+        Customer ravindu = customerRepo.findCustomerByNameAndAddress("Ravindu", "Bandaragama");
         System.out.println(ravindu.toString());
     }
 
     //Read Customer Using Name
     @Test
-    public void readCustomerByName(){
+    public void readCustomerByName() {
         Customer ravindu = customerRepo.readCustomerByName("Ravindu");
         System.out.println(ravindu.toString());
     }
 
     //Get Customer Using Name
     @Test
-    public void getCustomerByName(){
+    public void getCustomerByName() {
         Customer ravindu = customerRepo.getCustomerByName("Ravindu");
         System.out.println(ravindu.toString());
     }
 
     //Query Customer Using Name
     @Test
-    public void queryCustomerByName(){
+    public void queryCustomerByName() {
         Customer ravindu = customerRepo.queryCustomerByName("Ravindu");
         System.out.println(ravindu.toString());
     }
@@ -139,9 +139,9 @@ class CustomerRepoTest {
         System.out.println(ravindu.toString());
     }*/
 
-      //Search Customer List Using Name ( Return List)
+    //Search Customer List Using Name ( Return List)
     @Test
-    public void searchCustomerByName(){
+    public void searchCustomerByName() {
         List<Customer> customers = customerRepo.searchCustomerByName("Ravindu");
         for (Customer customer : customers) {
             System.out.println(customer.toString());
@@ -150,10 +150,17 @@ class CustomerRepoTest {
 
     //Stream Customer Using Name
     @Test
-    public void streamCustomerByName(){
+    public void streamCustomerByName() {
         Customer ravindu = customerRepo.streamCustomerByName("Ravindu");
         System.out.println(ravindu.toString());
     }
 
+    //Exist Customer Using Name
+
+    //Count Customer Using Name
+
+    //DeleteBy Customer Using Name
+
+    //Remove Customer Using Name
 
 }
