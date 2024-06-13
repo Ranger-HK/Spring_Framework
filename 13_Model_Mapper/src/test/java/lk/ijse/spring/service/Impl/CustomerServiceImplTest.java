@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @WebAppConfiguration //State test configuration class
 @ContextConfiguration(classes = {WebAppConfig.class}) //Import configurations for text context
 @ExtendWith(SpringExtension.class) //Run with Spring Extension
-@Transactional
+@Transactional //Data Not Added data Base After Using This Annotation
 class CustomerServiceImplTest {
 
     @Autowired
