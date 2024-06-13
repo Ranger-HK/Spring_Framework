@@ -63,5 +63,23 @@ class CustomerServiceImplTest {
 
     @Test
     void searchCustomer() {
+
+        CustomerDTO customerDTO1 = new CustomerDTO("C001", "Kamal", "Kaluthara", 100);
+        customerService.saveCustomer(customerDTO1);
+
+        CustomerDTO c001=customerService.searchCustomer("C001");
+
+        assertNotNull(c001);//Check Data Null or Not
+
+
+        //Assertion Method Using --> Must be Throw the Error
+        assertThrows(RuntimeException.class,()->{
+            customerService.searchCustomer("C001");
+        });
+
+        //Assertion Method Using --> Can't Throw the Error
+        assertDoesNotThrow(()->{
+            customerService.searchCustomer("C001");
+        });
     }
 }
