@@ -117,11 +117,12 @@
                 bindClickEvents();
                 clearForm();
             },
-            error: function (ob, state) {
-                console.log(ob, state);
+            error: function (ob) {
+                alert(ob.responseJSON.message)
             }
         });
     }
+
 
     //Save Customer
     function saveCustomer() {
@@ -143,6 +144,7 @@
         });
     }
 
+
     //Update Customer
     function updateCustomer() {
         //creating a js object with relevant data which you wanna send to the server
@@ -160,17 +162,12 @@
             data: JSON.stringify(cusOb), //format js object to valid json object
             success: function (res) {
                 if (res.code == 200) { //process is ok
-                    alert(res.message);
+                    alert("Customer Successfully Updated");
                     loadCustomers();
-                    clearForm();
-                } /*else if (res.status == 400) { //there is a problem with the client side
-                    alert(res.message);
-                } else {
-                    alert(res.data); //else may be there is a exception
-                }*/
+                }
             },
-            error: function (ob, errorStus) {
-                console.log(ob); //other error
+            error: function (ob) {
+                alert(ob.responseJSON.message)
             }
         });
     }
@@ -187,16 +184,10 @@
                     alert("Customer Successfully Deleted");
                     loadCustomers();
                     clearForm();
-                } else if (res.status == 400) {
-                    alert(res.data);
-                } else {
-                    alert(res.data);
                 }
             },
-            error: function (ob, status, t) {
-                console.log(ob);
-                console.log(status);
-                console.log(t);
+            error: function (ob) {
+                alert(ob.responseJSON.message)
             }
         });
     }
@@ -214,7 +205,12 @@
                     $("#cusName").val(customer.name);
                     $("#cusAddress").val(customer.address);
                     $("#cusSalary").val(customer.salary);
+                } else {
+                    clearForm();
                 }
+            },
+            error: function (ob) {
+                alert(ob.responseJSON.message)
             }
         });
     }
