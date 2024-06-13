@@ -80,17 +80,28 @@ class CustomerRepoTest {
         CustomerDTO customerDTO = new CustomerDTO("","","",10);
     }
 
+
+    //Query Methods Using
+
+    //Find Customer Using Name
     @Test
     public void findCustomerByName(){
         Customer ravindu = customerRepo.findCustomerByName("Ravindu");
         System.out.println(ravindu.toString());
     }
 
+    //Find Customer Using Address
     @Test
     public void findCustomerByAddress(){
         Customer ravindu = customerRepo.findCustomerByAddress("Nevada");
         System.out.println(ravindu.toString());
     }
 
+    //Find Customer Using Name And Address
+    @Test
+    public void findCustomerByNameAndAddress(){
+        Customer ravindu = customerRepo.findCustomerByNameAndAddress("Ravindu","Bandaragama");
+        System.out.println(ravindu.toString());
+    }
 
 }
