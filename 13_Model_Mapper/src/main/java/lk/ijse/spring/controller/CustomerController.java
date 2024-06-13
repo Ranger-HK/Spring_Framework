@@ -4,6 +4,7 @@ import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.service.CustomerService;
 import lk.ijse.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class CustomerController {
         return new ResponseUtil(200, "OK", customerService.getAllCustomers());
     }
 
+    @ResponseStatus(HttpStatus.CREATED)//201
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO customer) {
         customerService.saveCustomer(customer);
