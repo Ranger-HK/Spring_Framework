@@ -62,8 +62,10 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
     Customer streamCustomerByName(String name);
 
     //Exist Customer Using Name
+    boolean existsByNameAndAddress(String name, String address);
 
     //Count Customer Using Name
+    long countByName(String name);
 
     //DeleteBy Customer Using Name
 

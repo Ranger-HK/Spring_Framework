@@ -156,8 +156,19 @@ class CustomerRepoTest {
     }
 
     //Exist Customer Using Name
+    @Test
+    public  void textExistBy(){
+        boolean b = customerRepo.existsByNameAndAddress("Ravindu","Bandaragama");
+        System.out.println(b);
+    }
 
     //Count Customer Using Name
+    @Test
+    public void testCountBy(){
+       long r = customerRepo.countByName("Ravindu");
+        System.out.println(r);
+    }
+
 
     //DeleteBy Customer Using Name
 
