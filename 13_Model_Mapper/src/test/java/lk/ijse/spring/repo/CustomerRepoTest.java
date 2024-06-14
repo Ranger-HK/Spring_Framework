@@ -202,4 +202,29 @@ class CustomerRepoTest {
         });
     }
 
+    //Handling Parameters
+
+    //Native SQL Query Using with Positional Parameter - One Param
+    @Test
+    public void textQueryPosition1(){
+        Customer customer1 = customerRepo.searchCustomerFormNameOne("Ravindu");
+        System.out.println(customer1.toString());
+    }
+
+
+    //Native SQL Query Using with Positional Parameter - Two Param
+    @Test
+    public void textQueryPosition2(){
+        Customer customer2 = customerRepo.searchCustomerFormNameTwo("Ravindu","Kamal");
+        System.out.println(customer2.toString());
+    }
+
+
+    //Native SQL Query Using with Named Parameter with @Param
+    @Test
+    public void textQueryParam(){
+        Customer customer3 = customerRepo.searchCustomerFormNameWithParam("Ravindu","Bandaragama");
+        System.out.println(customer3.toString());
+    }
+
 }

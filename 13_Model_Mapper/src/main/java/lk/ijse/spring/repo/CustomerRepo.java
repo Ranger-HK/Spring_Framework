@@ -3,6 +3,7 @@ package lk.ijse.spring.repo;
 import lk.ijse.spring.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -86,6 +87,24 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
     //HQL Query Using
     @Query(value = "from Customer c")
     List<Customer> getAllCustomersWithHQL();
+
+
+
+    //Handling Parameters
+   // 1)Positional Parameter
+   // 2)Named Parameter with @Param
+
+    //Native SQL Query Using with Positional Parameter - One Param
+    @Query(value = "select * from Customer where name=?1",nativeQuery = true)
+    Customer searchCustomerFormNameOne(String name);
+
+    //Native SQL Query Using with Positional Parameter - Two Param
+    @Query(value = "select * from Customer where name=?1 and address=?2",nativeQuery = true)
+    Customer searchCustomerFormNameTwo(String name,String address);
+
+    //Native SQL Query Using with Named Parameter with @Param
+    @Query(value = "select * from Customer where name=:name and address=:address",nativeQuery = true)
+    Customer searchCustomerFormNameWithParam(@Param("name")  String name, @Param("address") String address);
 
 
 
