@@ -6,6 +6,8 @@ import lk.ijse.spring.entity.Customer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -225,6 +227,15 @@ class CustomerRepoTest {
     public void textQueryParam(){
         Customer customer3 = customerRepo.searchCustomerFormNameWithParam("Ravindu","Bandaragama");
         System.out.println(customer3.toString());
+    }
+
+    @Test
+    public void checkPageableFeatures(){
+        PageRequest pr = PageRequest.of(0, 3);
+        Page<Customer> all = customerRepo.findAll(pr);
+        all.forEach(v->{
+            System.out.println(v.toString());
+        });
     }
 
 }
