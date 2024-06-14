@@ -174,4 +174,13 @@ class CustomerRepoTest {
 
     //Remove Customer Using Name
 
+    //Native SQL Query Using
+    @Test
+    public void textQueryOne(){
+        List<Customer> allCustomers = customerRepo.getAllCustomers();
+        allCustomers.forEach(v->{
+            System.out.println(v.toString());
+        });
+    }
+
 }
