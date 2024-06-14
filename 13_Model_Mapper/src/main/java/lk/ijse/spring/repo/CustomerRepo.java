@@ -91,8 +91,8 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
 
 
     //Handling Parameters
-   // 1)Positional Parameter
-   // 2)Named Parameter with @Param
+   // 1)Positional Parameter = ?1
+   // 2)Named Parameter with @Param = :name
 
     //Native SQL Query Using with Positional Parameter - One Param
     @Query(value = "select * from Customer where name=?1",nativeQuery = true)
