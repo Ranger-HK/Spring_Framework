@@ -169,15 +169,34 @@ class CustomerRepoTest {
         System.out.println(r);
     }
 
-
     //DeleteBy Customer Using Name
-
     //Remove Customer Using Name
+
+
+    //Write Query Manually (MySQL,JPQL,HQL)
 
     //Native SQL Query Using
     @Test
-    public void textQueryOne(){
-        List<Customer> allCustomers = customerRepo.getAllCustomers();
+    public void textQueryMySQL(){
+        List<Customer> allCustomers = customerRepo.getAllCustomersWIthMySQL();
+        allCustomers.forEach(v->{
+            System.out.println(v.toString());
+        });
+    }
+
+    //JPQL(Java Persistence Query Language ) Query Using
+    @Test
+    public void textQueryJPQL(){
+        List<Customer> allCustomers = customerRepo.getAllCustomersWithJPQL();
+        allCustomers.forEach(v->{
+            System.out.println(v.toString());
+        });
+    }
+
+    //HQL Query Using
+    @Test
+    public void textQueryHQL(){
+        List<Customer> allCustomers = customerRepo.getAllCustomersWithHQL();
         allCustomers.forEach(v->{
             System.out.println(v.toString());
         });

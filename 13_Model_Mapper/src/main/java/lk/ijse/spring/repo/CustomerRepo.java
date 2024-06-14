@@ -72,9 +72,21 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
     //Remove Customer Using Name
 
 
+
+    //Write Query Manually (MySQL,JPQL,HQL)
+
     //Native SQL Query Using
     @Query(value = "select * from Customer",nativeQuery = true)
-    List<Customer> getAllCustomers();
+    List<Customer> getAllCustomersWIthMySQL();
+
+    //JPQL(Java Persistence Query Language ) Query Using
+    @Query(value = "select c from Customer c")
+    List<Customer> getAllCustomersWithJPQL();
+
+    //HQL Query Using
+    @Query(value = "from Customer c")
+    List<Customer> getAllCustomersWithHQL();
+
 
 
 }
