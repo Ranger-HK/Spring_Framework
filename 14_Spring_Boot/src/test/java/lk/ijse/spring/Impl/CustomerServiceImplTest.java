@@ -1,15 +1,10 @@
 package lk.ijse.spring.Impl;
 
-import lk.ijse.spring.config.WebAppConfig;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.service.CustomerService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
@@ -20,10 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @created 6/13/2024 - 1:52 PM
  * @project Spring_Framework
  */
-@WebAppConfiguration //State test configuration class
-@ContextConfiguration(classes = {WebAppConfig.class}) //Import configurations for text context
-@ExtendWith(SpringExtension.class) //Run with Spring Extension
-@Transactional //Data Not Added data Base After Using This Annotation
+@SpringBootTest
 class CustomerServiceImplTest {
 
     @Autowired

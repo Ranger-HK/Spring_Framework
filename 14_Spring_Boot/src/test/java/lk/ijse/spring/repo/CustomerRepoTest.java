@@ -6,6 +6,7 @@ import lk.ijse.spring.entity.Customer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -23,9 +24,7 @@ import java.util.Optional;
  * @project Spring_Framework
  */
 
-@WebAppConfiguration //State test configuration class
-@ContextConfiguration(classes = {JPAConfig.class}) //Import configurations for text context
-@ExtendWith(SpringExtension.class) //Run with Spring Extension
+@SpringBootTest
 @Transactional
 class CustomerRepoTest {
 
