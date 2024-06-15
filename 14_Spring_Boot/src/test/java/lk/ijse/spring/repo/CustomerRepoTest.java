@@ -1,18 +1,13 @@
 package lk.ijse.spring.repo;
 
-import lk.ijse.spring.config.JPAConfig;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.entity.Customer;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -159,15 +154,15 @@ class CustomerRepoTest {
 
     //Exist Customer Using Name
     @Test
-    public  void textExistBy(){
-        boolean b = customerRepo.existsByNameAndAddress("Ravindu","Bandaragama");
+    public void textExistBy() {
+        boolean b = customerRepo.existsByNameAndAddress("Ravindu", "Bandaragama");
         System.out.println(b);
     }
 
     //Count Customer Using Name
     @Test
-    public void testCountBy(){
-       long r = customerRepo.countByName("Ravindu");
+    public void testCountBy() {
+        long r = customerRepo.countByName("Ravindu");
         System.out.println(r);
     }
 
@@ -179,27 +174,27 @@ class CustomerRepoTest {
 
     //Native SQL Query Using
     @Test
-    public void textQueryMySQL(){
+    public void textQueryMySQL() {
         List<Customer> allCustomers = customerRepo.getAllCustomersWIthMySQL();
-        allCustomers.forEach(v->{
+        allCustomers.forEach(v -> {
             System.out.println(v.toString());
         });
     }
 
     //JPQL(Java Persistence Query Language ) Query Using
     @Test
-    public void textQueryJPQL(){
+    public void textQueryJPQL() {
         List<Customer> allCustomers = customerRepo.getAllCustomersWithJPQL();
-        allCustomers.forEach(v->{
+        allCustomers.forEach(v -> {
             System.out.println(v.toString());
         });
     }
 
     //HQL Query Using
     @Test
-    public void textQueryHQL(){
+    public void textQueryHQL() {
         List<Customer> allCustomers = customerRepo.getAllCustomersWithHQL();
-        allCustomers.forEach(v->{
+        allCustomers.forEach(v -> {
             System.out.println(v.toString());
         });
     }
@@ -208,7 +203,7 @@ class CustomerRepoTest {
 
     //Native SQL Query Using with Positional Parameter - One Param
     @Test
-    public void textQueryPosition1(){
+    public void textQueryPosition1() {
         Customer customer1 = customerRepo.searchCustomerFormNameOne("Ravindu");
         System.out.println(customer1.toString());
     }
@@ -216,16 +211,16 @@ class CustomerRepoTest {
 
     //Native SQL Query Using with Positional Parameter - Two Param
     @Test
-    public void textQueryPosition2(){
-        Customer customer2 = customerRepo.searchCustomerFormNameTwo("Ravindu","Kamal");
+    public void textQueryPosition2() {
+        Customer customer2 = customerRepo.searchCustomerFormNameTwo("Ravindu", "Kamal");
         System.out.println(customer2.toString());
     }
 
 
     //Native SQL Query Using with Named Parameter with @Param
     @Test
-    public void textQueryParam(){
-        Customer customer3 = customerRepo.searchCustomerFormNameWithParam("Ravindu","Bandaragama");
+    public void textQueryParam() {
+        Customer customer3 = customerRepo.searchCustomerFormNameWithParam("Ravindu", "Bandaragama");
         System.out.println(customer3.toString());
     }
 
@@ -233,10 +228,10 @@ class CustomerRepoTest {
     //page - page number start with 0
     //size - count of records for a  page
     @Test
-    public void checkPageableFeatures(){
+    public void checkPageableFeatures() {
         PageRequest pr = PageRequest.of(0, 3);
         Page<Customer> all = customerRepo.findAll(pr);
-        all.forEach(v->{
+        all.forEach(v -> {
             System.out.println(v.toString());
         });
     }
@@ -247,10 +242,10 @@ class CustomerRepoTest {
     //sort by - sorting to attribute
     //,descending - order to sort
     @Test
-    public void checkPageableFeature(){
+    public void checkPageableFeature() {
         PageRequest pr = PageRequest.of(0, 3, Sort.by("id").descending());
         Page<Customer> all = customerRepo.findAll(pr);
-        all.forEach(v->{
+        all.forEach(v -> {
             System.out.println(v.toString());
         });
     }
