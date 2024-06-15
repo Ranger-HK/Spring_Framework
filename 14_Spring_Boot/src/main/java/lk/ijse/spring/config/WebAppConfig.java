@@ -11,11 +11,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class WebAppConfig {
-
-    public WebAppConfig() {
-        System.out.println("Work");
-    }
-
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
